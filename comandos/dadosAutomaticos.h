@@ -50,7 +50,7 @@ void dadosAutomaticos(tree **raiz) {
     
     
     // Furia
-    jogador j2_1 = {"Leleti", 0, 0, 140000, 94,"ATA"};
+    jogador j2_1 = {"Leleti", 4, 0, 140000, 94,"ATA"};
     jogador j2_2 = {"Lipao", 0, 0, 115000, 92,"ATA"};
     jogador j2_3 = {"Donato", 0, 0, 21000, 80,"ATA"};
     jogador j2_4 = {"Jefinho", 0, 0, 40000, 85,"MEI"};
@@ -122,7 +122,7 @@ void dadosAutomaticos(tree **raiz) {
     insereABBrecursivo(raiz, t3);
 	
     // G3X
-    jogador j1_1 = {"Kelvin 'K9'", 0, 0, 115000, 93,"ATA"};
+    jogador j1_1 = {"Kelvin 'K9'", 3, 0, 115000, 93,"ATA"};
     jogador j1_2 = {"Rufino", 0, 0, 54000, 86,"MEI"};
     jogador j1_3 = {"Andreas Vaz", 0, 0, 100000, 91,"MEI"};
     jogador j1_4 = {"Kenu", 0, 0, 33000, 84,"MEI"};

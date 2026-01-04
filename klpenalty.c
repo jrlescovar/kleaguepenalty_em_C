@@ -78,7 +78,7 @@ int main(void){
 	SemanaBrasil *semanaAmericas  = malloc(sizeof(SemanaBrasil)); 
 	Confronto *confrontoAmericas = malloc(sizeof(Confronto));
 	playoffsConfrontos *jogosAmericas; jogosAmericas= malloc(sizeof(playoffsConfrontos));
-	
+
 	
 	int desbugarplayoff = 1;
 	tela1(); //tela de abertura apenas.
@@ -140,11 +140,7 @@ int main(void){
 				                	//criarQuartas
 				                	if(rodadaOficial == 10){
 				                		listaTabela = copiarLista(listaBrasil);//salva a tabela para nao exiber novas informações do playoffs
-
 										criarPlayoffBrasil(&jogosBrasil,listaBrasil,1);
-									
-										
-										
 				                	}
 				                	//criarSemiFinal
 				                	if(rodadaOficial == 11){
@@ -152,7 +148,6 @@ int main(void){
 				                		criarPlayoffEspanha(&jogosEspanha,listaEspanha,4);
 				                		criarPlayoffItalia(&jogosItalia,listaItalia,4);
 				                		criarPlayoffAmericas(&jogosAmericas,listaAmericas,4);
-				                		
 				                	}
 				                	//criarFinak
 									if(rodadaOficial == 12){
@@ -551,6 +546,9 @@ int main(void){
 				                		break;
 				                		case 'G':
 				                			exibirEstatisticaTime(listaBrasil,10,1);
+				                		break;
+				                		case 'T':
+				                			marketplace(&listaBrasil,resultado,&listaEspanha,&listaItalia,&listaAmericas,rodadaOficial,1);
 				                		break;
 				                		default:
 				                				if(menuSelecionado == 27)

@@ -923,20 +923,7 @@ char ligaBrasil(listaDupla *lista, listaDupla *lista2,int buscar,SemanaBrasil* c
 	listaDupla *aux = buscarTimeNaLista(lista, buscar);
 	int y,x,i;
 	
-	i = 0;
-	while(i < 28) { // de 2 até 29 ? 28 posições
-	    textcolor((i % 2 == 0) ? 14 : 2); // Alterna cores
-	
-	    gotoxy(2, 2 + i);  // Coluna fixa (X=17), linha variável
-	    printf((i % 2 == 0) ? "#" : "$");
-	
-	    gotoxy(119, 2 + i);  // Exemplo: segunda linha vertical à direita
-	    printf((i % 2 == 0) ? "#" : "$");
-	    
-	    i++;
-	}
-	textcolor(15);
-	MolduraColorida(1, 1, 120, 30,2,2,14,14);
+	MolduraBrasil();
 	
 	Moldura(10, 5, 68, 18);
 	
@@ -1053,13 +1040,12 @@ char ligaBrasil(listaDupla *lista, listaDupla *lista2,int buscar,SemanaBrasil* c
 	
 	
 	
-	Moldura(10, 24, 27, 27);/*
-	gotoxy(16,25);
-	printf("TROCAS");
-	gotoxy(24,26);
-	printf("[T]");*/
+	Moldura(10, 24, 27, 27);
 	gotoxy(14,25);
-	printf("? EM BREVE ?");
+	printf("MARKETPLACE");
+	gotoxy(24,26);
+	printf("[T]");
+
 	
 	Moldura(30, 24, 48, 27);
 	gotoxy(34,25);
@@ -1133,60 +1119,16 @@ void gerenciarElenco(listaDupla **lista, tree *resultado,int localidade) {
     int i = 0;
     
     if(localidade == 1){
-    	while(i < 28) { // de 2 até 29 ? 28 posições
-		    textcolor((i % 2 == 0) ? 14 : 2); // Alterna cores
-		
-		    gotoxy(2, 2 + i);  // Coluna fixa (X=17), linha variável
-		    printf((i % 2 == 0) ? "#" : "$");
-		
-		    gotoxy(119, 2 + i);  // Exemplo: segunda linha vertical à direita
-		    printf((i % 2 == 0) ? "#" : "$");
-		    
-		    i++;
-		}
-		MolduraColorida(1, 1, 120, 30, 2, 2, 14, 14);
+    	MolduraBrasil();
     }
     if(localidade == 2){
-	    while(i < 28) { // de 2 até 29 ? 28 posições
-	    textcolor((i % 2 == 0) ? 14 : 4); // Alterna cores
-	
-	    gotoxy(2, 2 + i);  // Coluna fixa (X=17), linha variável
-	    printf((i % 2 == 0) ? "$" : "@");
-	
-	    gotoxy(119, 2 + i);  // Exemplo: segunda linha vertical à direita
-	    printf((i % 2 == 0) ? "$" : "@");
-	    
-	    i++;
-		}
-    	MolduraColorida(1, 1, 120, 30, 4, 4, 14, 14);
+	    MolduraEspanha();
     }
 	 if(localidade == 3){
-	    while(i < 28) { // de 2 até 29 ? 28 posições
-	    textcolor((i % 2 == 0) ? 4 : 10); // Alterna cores
-	
-	    gotoxy(2, 2 + i);  // Coluna fixa (X=17), linha variável
-	    printf((i % 2 == 0) ? "=" : "*");
-	
-	    gotoxy(119, 2 + i);  // Exemplo: segunda linha vertical à direita
-	    printf((i % 2 == 0) ? "=" : "*");
-	    
-	    i++;
-		}
-    	MolduraColorida(1, 1, 120, 30, 15, 15, 10, 4);
+	   MolduraItalia();
     }
     if(localidade == 4){
-	    while(i < 28) { // de 2 até 29 ? 28 posições
-	    textcolor((i % 2 == 0) ? 8 : 9); // Alterna cores
-	
-	    gotoxy(2, 2 + i);  // Coluna fixa (X=17), linha variável
-	    printf((i % 2 == 0) ? "<" : "?");
-	
-	    gotoxy(119, 2 + i);  // Exemplo: segunda linha vertical à direita
-	    printf((i % 2 == 0) ? ">" : "?");
-	    
-	    i++;
-		}
-    	MolduraColorida(1, 1, 120, 30, 15, 15, 9, 9);
+	    MolduraAmericas();
     }
 	if(localidade == 1){
 	    if (resultado->time.codigo == 1) {
@@ -2268,5 +2210,370 @@ void exibirEstatisticaTime(listaDupla *lista,int num,int localidade){
 		}
 		
 	}while(op != 27);
+}
+void limaparNomesTrocas(void){
+	gotoxy(66, 7);
+	printf("                                                     ");
+    gotoxy(66, 8);
+    printf("                                                     ");
+	gotoxy(66, 10);
+	printf("                                                     ");
+    gotoxy(66, 12);
+    printf("                                                     ");
+    gotoxy(66, 14);
+    printf("                                                     ");
+    gotoxy(66, 16);
+    printf("                                                     ");
+    gotoxy(66, 18);
+    printf("                                                     ");
+    gotoxy(66, 20);
+    printf("                                                     ");
+}
+void marketplace(listaDupla **lista1,tree *resultado,listaDupla **lista2,listaDupla **lista3,listaDupla **lista4,int rodadaOficial,int l1){
+	int rodadaMAX = 7;
+	char op;int localidade;
+	int i, num;
+	listaDupla *meuTime = buscarTimeNaLista(*lista1, resultado->time.codigo);
+	listaDupla *listaAtual = NULL;
+	clrscr();
+	int sairdessamerda;
+	if(l1 == 1){
+	    if (meuTime->info.elenco.codigo == 1) {
+	         MolduraColorida(7, 6, 58, 22, meuTime->info.elenco.cor1, 2, meuTime->info.elenco.cor2, meuTime->info.elenco.cor2);
+	    } else if (meuTime->info.elenco.codigo == 5) {
+	        MolduraColorida(7, 6, 58, 22, meuTime->info.elenco.cor1, meuTime->info.elenco.cor2, 15, 15);
+	    } else if (meuTime->info.elenco.codigo == 7) {
+	        MolduraColorida(7,6,58,22, meuTime->info.elenco.cor2, meuTime->info.elenco.cor1, meuTime->info.elenco.cor2, meuTime->info.elenco.cor1);
+	    } else if (meuTime->info.elenco.codigo == 8) {
+	        MolduraColorida(7,6,58,22, meuTime->info.elenco.cor1, meuTime->info.elenco.cor1,1, meuTime->info.elenco.cor2);
+	    } else {
+	        MolduraColorida(7,6,58,22, meuTime->info.elenco.cor1, meuTime->info.elenco.cor1, meuTime->info.elenco.cor2, meuTime->info.elenco.cor2);
+	    }
+	}else if(l1 == 2){
+		 if (meuTime->info.elenco.codigo == 7) {
+	       MolduraColorida(7,6,58,22, meuTime->info.elenco.cor1, 14, meuTime->info.elenco.cor2, meuTime->info.elenco.cor2);
+		 }else if(meuTime->info.elenco.codigo == 11) {
+	       MolduraColorida(7,6,58,22, 14, 4, 8,8);
+		 }else if(meuTime->info.elenco.codigo == 8) {
+	       MolduraColorida(7,6,58,22,13, 13,13,13);
+		 }else if(meuTime->info.elenco.codigo == 10) {
+	       MolduraColorida(7,6,58,22,meuTime->info.elenco.cor2, meuTime->info.elenco.cor1, meuTime->info.elenco.cor1, meuTime->info.elenco.cor1);
+		 }else{
+			MolduraColorida(7, 6,58, 22, meuTime->info.elenco.cor1, meuTime->info.elenco.cor1, meuTime->info.elenco.cor2, meuTime->info.elenco.cor2);
+		}		
+	}else if(l1 == 3){
+		MolduraColorida(7, 6, 58, 22, meuTime->info.elenco.cor1, meuTime->info.elenco.cor1, meuTime->info.elenco.cor2, meuTime->info.elenco.cor2);
+	}else if(l1 == 4){
+		MolduraColorida(7, 6, 58, 22, meuTime->info.elenco.cor1, meuTime->info.elenco.cor1, meuTime->info.elenco.cor2, meuTime->info.elenco.cor2);
+	}
+	MolduraColorida(1,1,120,30,15,15,15,15);
+	MolduraColorida(64,6,114,22,15,15,15,15);
+	i = 1;
+	localidade = 1;
+	do{
+		if(localidade == 1){
+			if(l1 == 1){
+				num = 9;
+				listaAtual = buscarVizinhoTimeNaLista(*lista1, i,resultado->time.codigo);
+			}	
+			else{
+				num = 10;
+				listaAtual = buscarTimeNaLista(*lista1 , i);
+			}
+			if (listaAtual != NULL) {
+				gotoxy(84,5);
+				printf("KL BRASIL --> [M]          1/4");
+			    if (listaAtual->info.elenco.codigo == 1) {
+			         MolduraColorida(64, 6, 114, 22, listaAtual->info.elenco.cor1, 2, listaAtual->info.elenco.cor2, listaAtual->info.elenco.cor2);
+			    } else if (listaAtual->info.elenco.codigo == 5) {
+			      	MolduraColorida(64, 6, 114, 22, listaAtual->info.elenco.cor1, listaAtual->info.elenco.cor2, 15, 15);
+			    } else if (listaAtual->info.elenco.codigo == 7) {
+			       MolduraColorida(64,6,114,22, listaAtual->info.elenco.cor2, listaAtual->info.elenco.cor1, listaAtual->info.elenco.cor2, listaAtual->info.elenco.cor1);
+			    } else if (listaAtual->info.elenco.codigo == 8) {
+			       MolduraColorida(64,6,114,22, listaAtual->info.elenco.cor1, listaAtual->info.elenco.cor1,1, listaAtual->info.elenco.cor2);
+			    } else {
+			       MolduraColorida(64,6,114,22, listaAtual->info.elenco.cor1, listaAtual->info.elenco.cor1, listaAtual->info.elenco.cor2, listaAtual->info.elenco.cor2);
+			    }	
+			}	
+		}else if(localidade == 2){
+			if(l1 == 2){
+				num = 11;
+				listaAtual = buscarVizinhoTimeNaLista(*lista2,i,resultado->time.codigo);
+			}else{
+				num = 12;
+				listaAtual = buscarTimeNaLista(*lista2, i);
+			}
+			gotoxy(76,5);
+			printf(" [N] <-- KL ESPANHA --> [M]         2/4");
+			 if (listaAtual->info.elenco.codigo == 7) {
+		       MolduraColorida(64,6,114,22, listaAtual->info.elenco.cor1, 14, listaAtual->info.elenco.cor2, listaAtual->info.elenco.cor2);
+			 }else if(listaAtual->info.elenco.codigo == 11) {
+		       MolduraColorida(64,6,114,22, 14, 4, 8,8);
+			 }else if(listaAtual->info.elenco.codigo == 8) {
+		       MolduraColorida(64,6,114,22,13, 13,13,13);
+			 }else if(listaAtual->info.elenco.codigo == 10) {
+		       MolduraColorida(64,6,114,22,listaAtual->info.elenco.cor2, listaAtual->info.elenco.cor1, listaAtual->info.elenco.cor1, listaAtual->info.elenco.cor1);
+			 }else{
+				MolduraColorida(64, 6, 114, 22, listaAtual->info.elenco.cor1, listaAtual->info.elenco.cor1, listaAtual->info.elenco.cor2, listaAtual->info.elenco.cor2);
+			}		
+		}else if(localidade == 3){
+			if(l1 == 3){
+				num = 11;
+				listaAtual = buscarVizinhoTimeNaLista(*lista3, i,resultado->time.codigo);
+			}else{
+				num = 12;
+				listaAtual = buscarTimeNaLista(*lista3, i);
+			}
+			gotoxy(77,5);
+			printf(" [N] <-- KL ITALIA --> [M]         3/4");
+			MolduraColorida(64, 6, 114, 22, listaAtual->info.elenco.cor1, listaAtual->info.elenco.cor1, listaAtual->info.elenco.cor2, listaAtual->info.elenco.cor2);
+		}else if(localidade == 4){
+			if(l1 == 4){
+				num = 11;
+				listaAtual = buscarVizinhoTimeNaLista(*lista4, i,resultado->time.codigo);
+			}else{
+				num = 12;
+				listaAtual = buscarTimeNaLista(*lista4, i);
+			}
+			gotoxy(78,5);
+			printf("[N] <-- KL AMERICAS              4/4");
+			MolduraColorida(64, 6, 114, 22, listaAtual->info.elenco.cor1, listaAtual->info.elenco.cor1, listaAtual->info.elenco.cor2, listaAtual->info.elenco.cor2);
+		}
+		
+		gotoxy(80,23);
+		if(i == 1){
+			printf("        TIME --> [D]");
+		}else if(i < num){
+			printf("[A] <-- TIME --> [D]");
+		}else{
+			printf("[A] <-- TIME");
+		}
+		gotoxy(110,23);
+		printf("%d/%d",i,num );
+		//parte de exibir os time.  MEU TME ""
+		textcolor(resultado->time.cor1);
+ 		gotoxy(9, 7);
+	    printf("Time: %s  [%d]", resultado->time.nomeEquipe,((resultado->time.jogador1.overall + resultado->time.jogador2.overall) + (resultado->time.jogador3.overall + resultado->time.jogador4.overall) + (resultado->time.jogador5.overall + resultado->time.goleiro1.overall))/6); 
+	    gotoxy(9, 8);
+	    printf("Presidente: %s [%d]", resultado->time.presida.nome, resultado->time.presida.overall);
+		gotoxy(13, 10);
+	    printf("[%s] - %s [%d][$: %.3f]", resultado->time.jogador1.posicao, resultado->time.jogador1.nome, resultado->time.jogador1.overall, resultado->time.jogador1.valor/1000);	
+        gotoxy(13, 12);
+        printf("[%s] - %s [%d][$: %.3f]", resultado->time.jogador2.posicao, resultado->time.jogador2.nome, resultado->time.jogador2.overall, resultado->time.jogador2.valor/1000);
+        gotoxy(13, 14);
+        printf("[%s] - %s [%d][$: %.3f]", resultado->time.jogador3.posicao, resultado->time.jogador3.nome, resultado->time.jogador3.overall, resultado->time.jogador3.valor/1000);
+        gotoxy(13, 16);
+        printf("[%s] - %s [%d][$: %.3f]", resultado->time.jogador4.posicao, resultado->time.jogador4.nome, resultado->time.jogador4.overall, resultado->time.jogador4.valor/1000);
+        gotoxy(13, 18);
+        printf("[%s] - %s [%d][$: %.3f]", resultado->time.jogador5.posicao, resultado->time.jogador5.nome, resultado->time.jogador5.overall, resultado->time.jogador5.valor/1000);
+        gotoxy(13, 20);
+        printf("[%s] - %s [%d][$: %.3f]", resultado->time.goleiro1.posicao, resultado->time.goleiro1.nome, resultado->time.goleiro1.overall, resultado->time.goleiro1.valor/1000);
+        textcolor(15);
+        // time gerenciar troca.
+        textcolor(listaAtual->info.elenco.cor1);
+ 		gotoxy(66, 7);
+	    printf("Time: %s  [%d]", listaAtual->info.elenco.nomeEquipe,((listaAtual->info.elenco.jogador1.overall + listaAtual->info.elenco.jogador2.overall) + (listaAtual->info.elenco.jogador3.overall + listaAtual->info.elenco.jogador4.overall) + (listaAtual->info.elenco.jogador5.overall + listaAtual->info.elenco.goleiro1.overall))/6); 
+	    gotoxy(66, 8);
+	    printf("Presidente: %s [%d]", listaAtual->info.elenco.presida.nome, listaAtual->info.elenco.presida.overall);
+		gotoxy(70, 10);
+	    printf("[%s] - %s [%d][$: %.3f]", listaAtual->info.elenco.jogador1.posicao, listaAtual->info.elenco.jogador1.nome, listaAtual->info.elenco.jogador1.overall, listaAtual->info.elenco.jogador1.valor/1000);	
+        gotoxy(70, 12);
+        printf("[%s] - %s [%d][$: %.3f]", listaAtual->info.elenco.jogador2.posicao, listaAtual->info.elenco.jogador2.nome, listaAtual->info.elenco.jogador2.overall, listaAtual->info.elenco.jogador2.valor/1000);
+        gotoxy(70, 14);
+        printf("[%s] - %s [%d][$: %.3f]", listaAtual->info.elenco.jogador3.posicao, listaAtual->info.elenco.jogador3.nome, listaAtual->info.elenco.jogador3.overall, listaAtual->info.elenco.jogador3.valor/1000);
+        gotoxy(70, 16);
+        printf("[%s] - %s [%d][$: %.3f]", listaAtual->info.elenco.jogador4.posicao, listaAtual->info.elenco.jogador4.nome, listaAtual->info.elenco.jogador4.overall, listaAtual->info.elenco.jogador4.valor/1000);
+        gotoxy(70, 18);
+        printf("[%s] - %s [%d][$: %.3f]", listaAtual->info.elenco.jogador5.posicao, listaAtual->info.elenco.jogador5.nome, listaAtual->info.elenco.jogador5.overall, listaAtual->info.elenco.jogador5.valor/1000);
+        gotoxy(70, 20);
+        printf("[%s] - %s [%d][$: %.3f]", listaAtual->info.elenco.goleiro1.posicao, listaAtual->info.elenco.goleiro1.nome, listaAtual->info.elenco.goleiro1.overall, listaAtual->info.elenco.goleiro1.valor/1000);
+        textcolor(15);
+        printCentralizado("APERTE [ESC] PARA SAIR DO MARKETPLACE",2,12);
+        sairdessamerda = 0;
+        if(rodadaOficial <= 6){
+        	printCentralizado("APERTE [T] PARA INICIAR UM TROCA ENTRE ESSES TIMES",25,15);
+			if(rodadaOficial <= 6){
+				int toggle = 0;
+				do{
+					if (toggle == 0)
+		            	textcolor(12);
+		        	else
+		            	textcolor(4);
+		            toggle = !toggle;
+		
+			        int tempoEspera = 1000; // em milissegundos
+			        int tempoPassado = 0;
+			        int passo = 10; // 10ms de cada vez
+					gotoxy(37,29);printf("! ! ! FALTAM %d RODADAS PARA O MERCADO FECHAR ! ! !",rodadaMAX - rodadaOficial);textcolor(15);gotoxy(119,29);
+			        while (tempoPassado < tempoEspera) {
+			            if (kbhit()){
+			            	sairdessamerda = 1;
+							break;
+						} // Se alguma tecla for pressionada, sai na hora
+			            Sleep(passo);
+			            tempoPassado += passo;
+		        	}
+		        	
+		        }while(sairdessamerda != 1);
+		        
+			}
+		}else{
+			printCentralizado("MERCADO FECHADO, NOVO MERCADO ABRE NO INICIO DA PROXIMA TEMPORADA",29,12);
+		}
+		gotoxy(119,29);
+		op = getch();
+		op = toupper(op);
+		switch(op){
+			case 'A':
+				if(i > 1){
+					i--;
+					limaparNomesTrocas();
+				}
+			break;
+			case 'D':
+				if(i < num){
+					i++;
+					limaparNomesTrocas();
+
+				}
+			break;	
+			case 'M':
+				if(localidade < 4){
+					localidade++;
+					i = 1;
+					limaparNomesTrocas();
+				}
+			break;
+			case 'N':
+				if(localidade != 1){
+					localidade--;
+					i = 1;
+					limaparNomesTrocas();
+				}
+			break;
+			case 'T':
+				if(rodadaOficial <= 6){
+					printCentralizado("                                                           ",25,3);
+					gotoxy(80,23);
+					printf("                                    ");
+					gotoxy(77,5);
+					printf("                                           ");
+					int confirmado = 0,kbind,sair = 0;
+					char jogadorTime, jogadorFora;
+					do{
+						printCentralizado("APERTA A TECLA REFERENTE AO JOGADOR QUE DESEJA TROCAR",25,15);
+						printCentralizado("LEMBRETE: GOLEIROS SO PODEM SER TROCADOS POR GOLEIROS",27,15);
+						gotoxy(9, 10);printf("[1]");
+						gotoxy(9, 12);printf("[2]");
+						gotoxy(9, 14);printf("[3]");
+						gotoxy(9, 16);printf("[4]");
+						gotoxy(9, 18);printf("[5]");
+						gotoxy(9, 20);printf("[G]");
+						gotoxy(119,29);
+						jogadorTime = toupper(getch());
+						if(jogadorTime == 27){
+							sair = 1;
+							confirmado = 1;
+						}
+						if(sair == 0){
+							if (jogadorTime == '1' || jogadorTime == '2' || jogadorTime == '3' || jogadorTime == '4'|| jogadorTime == '5' || jogadorTime == 'G')
+								confirmado = 1;
+							else{
+								printCentralizado("                                                                   ",25,3);
+								printCentralizado("                                                                   ",27,3);
+						 		printCentralizado("SELECIONE UMA TECLA VALIDA ENTRE [1] [2] [3] [4] [5] [G]",25,15);gotoxy(119,27);
+								Sleep(1222);
+								printCentralizado("                                                        ",25,15);
+							}
+						}
+						
+					}while(confirmado != 1);
+					if(sair == 0){
+							gotoxy(9, 10);printf("   ");gotoxy(9, 12);printf("   ");gotoxy(9, 14);printf("   ");gotoxy(9, 16);printf("   ");gotoxy(9, 18);printf("   ");gotoxy(9, 20);printf("   ");
+						if(jogadorTime == '1')
+							kbind = 10;
+						if(jogadorTime == '2')
+							kbind = 12;
+						if(jogadorTime == '3')
+							kbind = 14;
+						if(jogadorTime == '4')
+							kbind = 16;
+						if(jogadorTime == '5')
+							kbind = 18;
+						if(jogadorTime == 'G')
+							kbind = 20;
+							
+						gotoxy(9,kbind);
+						printf("-->");
+						
+						printCentralizado("                                                                   ",25,3);
+						confirmado = 0;
+						do{
+							printCentralizado("APERTA A TECLA REFERENTE AO JOGADOR DO TIME ADVERSARIO QUE DESEJA TROCAR",25,15);
+							printCentralizado("LEMBRETE: GOLEIROS SO PODEM SER TROCADOS POR GOLEIROS",27,15);
+							gotoxy(66, 10);printf("[1]");gotoxy(66, 12);printf("[2]");gotoxy(66, 14);printf("[3]");gotoxy(66, 16);printf("[4]");gotoxy(66, 18);printf("[5]");gotoxy(66, 20);printf("[G]");gotoxy(119,29);
+							jogadorFora = toupper(getch());
+							if(jogadorFora == 27){
+								sair = 1;
+								confirmado = 1;
+							}
+							if(sair == 0){
+								if(jogadorTime == '1' || jogadorTime == '2' || jogadorTime == '3' || jogadorTime == '4' || jogadorTime == '5' ){
+									if(jogadorFora == '1' || jogadorFora == '2' || jogadorFora == '3' || jogadorFora == '4'|| jogadorFora == '5'){
+										confirmado = 1;
+									}else{
+										printCentralizado("                                                                           ",25,3);
+										printCentralizado("                                                           ",27,3);
+									 	printCentralizado("SELECIONE UMA TECLA VALIDA ENTRE [1] [2] [3] [4] [5]",25,15);gotoxy(119,27);
+										Sleep(1222);
+										printCentralizado("                                                        ",25,15);
+									}
+								}else{
+									//EU ESCOLHER GK
+									if(jogadorTime == 'G'){
+										if(jogadorFora == 'G'){
+											confirmado = 1;
+										}else{
+											printCentralizado("                                                                           ",25,3);
+											printCentralizado("                                                           ",27,3);
+										 	printCentralizado("GOLEIROS SO PODEM SER TROCADOS POR GOLEIROS",25,15);gotoxy(119,29);
+											Sleep(702);
+											printCentralizado("                                                        ",25,15);
+											confirmado = 0;
+										}
+									}
+								}
+							}	
+								
+						}while(confirmado != 1);
+						if(sair == 0){
+							printCentralizado("                                                                           ",25,3);
+							gotoxy(66, 10);printf("   ");gotoxy(66, 12);printf("   ");gotoxy(66, 14);printf("   ");gotoxy(66, 16);printf("   ");gotoxy(66, 18);printf("   ");gotoxy(66, 20);printf("   ");
+							if(jogadorFora == '1')
+								kbind = 10;
+							if(jogadorFora == '2')
+								kbind = 12;
+							if(jogadorFora == '3')
+								kbind = 14;
+							if(jogadorFora == '4')
+								kbind = 16;
+							if(jogadorFora == '5')
+								kbind = 18;
+							if(jogadorFora == 'G')
+								kbind = 20;
+							gotoxy(66,kbind);
+							printf("-->");gotoxy(119,29);
+							printCentralizado("                                                           ",27,3);
+						}
+					}
+				}
+			break;
+		}
+		gotoxy(70,5);
+		printf("                                              ");
+		gotoxy(70,23);
+		printf("                                               ");
+	}while(op != 27);	 
+	
 }
 #endif

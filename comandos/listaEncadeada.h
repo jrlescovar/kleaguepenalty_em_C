@@ -66,7 +66,22 @@ listaDupla* buscarTimeNaLista(listaDupla *lista, int codigo) {
     
     // Se não encontrar o time com o código informado
     return NULL;
-} 
+}
+listaDupla* buscarVizinhoTimeNaLista(listaDupla *lista, int posicao, int codigoIgnorado) {
+    int cont = 0;
+
+    while (lista != NULL) {
+        if (lista->info.elenco.codigo != codigoIgnorado) {
+            cont++;
+            if (cont == posicao) {
+                return lista;
+            }
+        }
+        lista = lista->prox;
+    }
+
+    return NULL;  // Não encontrou o vizinho desejado
+}
 listaDupla* buscarTimeNaListaPOSI(listaDupla *lista, int codigo) {
     listaDupla* temp = lista;  // Inicia com o primeiro nó da lista
     
@@ -857,6 +872,42 @@ listaDupla* copiarLista(listaDupla *original) {
 
         // Avança os ponteiros
         ultimo = novo;
+        original = original->prox;
+    }
+
+    return novaLista;
+}
+listaDupla* copiarLista2(listaDupla *original, int cod) {
+    if (!original) return NULL;
+
+    listaDupla *novaLista = NULL;
+    listaDupla *ultimo = NULL;
+
+    while (original) {
+        // Ignora o time com o código igual ao informado
+        if (original->info.elenco.codigo != cod) {
+            // Cria um novo nó
+            listaDupla *novo = malloc(sizeof(listaDupla));
+            if (!novo) return NULL;
+
+            // Copia os dados
+            novo->info = original->info;
+
+            // Inicializa os ponteiros
+            novo->prox = NULL;
+            novo->ant = ultimo;
+
+            // Encadeia os nós
+            if (!novaLista)
+                novaLista = novo;
+            else
+                ultimo->prox = novo;
+
+            // Avança o último
+            ultimo = novo;
+        }
+
+        // Avança no original
         original = original->prox;
     }
 

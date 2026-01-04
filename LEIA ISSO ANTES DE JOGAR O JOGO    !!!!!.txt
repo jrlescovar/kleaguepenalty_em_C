@@ -1,7 +1,7 @@
 **** *** ** ** * ** * * ** * ** ** * ** ** ** * 
 **** *** ** ** * ** * * ** * ** ** * ** ** ** * 
 
-PARA JOGAR CLIQUE NO ARQUIVO COM O NOME DE KL PENALTY GAME. !!!!!! no momento o nome esta com main.exe 
+PARA JOGAR CLIQUE NO ARQUIVO COM O NOME DE KL PENALT.exe. !!!!!! 
 aqui mesmo no GitHub depois clique em View raw, 
 não tenho licença da Microsoft então pode indicar que é um arquivo de risco, 
 porem não contem nada de risco, tudo feito em C puro
@@ -16,15 +16,13 @@ ACESSE A PASTA TUTORIAL - importante <---------------
 **** *** ** ** * ** * * ** * ** ** * ** ** ** * 
 **** *** ** ** * ** * * ** * ** ** * ** ** ** * 
 
-NAO RECOMEDADO ABRIR DIRETO NO TERMINAL EM ALGUNS PODERA RESULTAR EM BUG VISUAL PELO TAMANHO DA TELA DO TERMINAL(EMULADO).
-
-ESSE JOGO FOI FEITO PARA WINDOWS 11 e 10. lembra de ver a pasta tutorial!!!! (funciona em windowns anterior ao 10?? não sei se o seu for testa ai de da o feedback (improvável de ser))
+ESSE JOGO FOI FEITO PARA WINDOWS 11 e 10. lembra de ver a pasta tutorial!!!! (funciona em windowns anterior ao 10?? não sei.
 
 -- EM MODO TERMIMAL ASCII --
 
 Intuito de ser um jogo divertido e dinâmico
 
-
-NÃO COLOQUE O TERMINAL EM TELA CHEIA! - RESULTARA EM BUG DE RESOLUÇÃO DE ESCRITA.
+* * * NÃO COLOQUE O TERMINAL EM TELA CHEIA! - RESULTARA EM BUG DE RESOLUÇÃO DE ESCRITA.
+* * *
 
 VEJA AS IMAGENS DE RESOLUÇÃO DE COR NA PASTA TUTORIAL. PARA UMA MELHOR QUALIDADE. 
